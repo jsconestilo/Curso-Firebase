@@ -1,0 +1,46 @@
+Instalar las dependencias de npm
+npm install
+
+Instalar gulp de forma global
+npm install --global gulp
+
+Arrancar gulp desde dentro del proyecto (todo ya esta configurado)
+gulp
+
+
+
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+    }
+  }
+}
+
+
+{} información que se interpreta como variable.
+En este caso es que las reglas a continuación deben coinicidir con cualquier {database} dentro del proyeco
+
+ match /{document=**}  cualquier documento 
+
+
+  match /posts/{post}
+  cualquier documento dentro de la colección posts
+
+   match /posts/ABC
+   el documento ABC dentro de la colección posts
+
+  allow read, update, delete: if request.auth.uid != null 
+  perimta leer, escribir actualizar y borrar solo si
+  	request (el que envia la petición) iud (identificador de usuario)
+
+ request.. es el que solicita
+ request.auth.uid  el identificador del usuario solicitante
+
+resource: hace referencia al documento solicitado (existente)
+resource.data: es un mapa (objeto) de todos los campos y valores almacenados en el documeto
+ resource.data.emal  el campo email del el documento (recurso)
+
+
+ request.resource: contiene el estado futuro (write) o pendiente (update) del documento entrante
